@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opaline Ateliê - Resinas Personalizadas</title>
+  <meta name="description" content="Produtos artesanais personalizados em resina para presentes, lembranças e decoração.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="promo-strip" aria-label="Promoções">
+    <div><i class="fa-solid fa-gift"></i> 5% de desconto na sua primeira compra com o cupom <strong>DESCONTO5</strong></div>
+    <div><i class="fa-solid fa-truck-fast"></i> Frete grátis acima de R$ 199,90</div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#home" aria-label="Opaline Ateliê">
+        <img src="images/logo-opaline.png" alt="Logo Opaline Resinas Personalizadas">
+      </a>
+      <div class="nav-links">
+        <a href="#home">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <button class="cart-button" type="button" data-open-cart aria-label="Abrir carrinho">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">Resinas personalizadas</p>
+        <h1>Peças únicas, feitas com amor para momentos especiais</h1>
+        <p>Marca-páginas, chaveiros, kits e itens de decoração produzidos artesanalmente para eternizar detalhes, nomes, cores e histórias.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#produtos">Comprar agora</a>
+          <button class="coupon-pill" type="button" data-copy-coupon>
+            <span>Cupom</span>
+            <strong>DESCONTO5</strong>
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      <div class="hero-showcase" aria-label="Destaques Opaline">
+        <img class="hero-logo" src="images/logo-opaline.png" alt="Opaline Resinas Personalizadas">
+        <div class="hero-product">
+          <img src="https://opalineatelie.netlify.app/images/30-kit-marca-pagina-e-chaveiro-lumier.jpg" alt="Kit Marca-página + Chaveiro Lumièr">
+          <span>Kit presenteável</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Vantagens da loja">
+      <div><i class="fa-solid fa-wand-magic-sparkles"></i><span>Produtos personalizados</span></div>
+      <div><i class="fa-solid fa-ticket"></i><span>5% OFF com DESCONTO5</span></div>
+      <div><i class="fa-solid fa-truck"></i><span>Frete grátis acima de R$ 199,90</span></div>
+      <div><i class="fa-brands fa-whatsapp"></i><span>Pedido pelo WhatsApp</span></div>
+    </section>
+
+    <section class="products-section" id="produtos">
+      <div class="section-heading">
+        <p class="eyebrow">Vitrine</p>
+        <h2>Nossos produtos</h2>
+      </div>
+      <div class="toolbar">
+        <label for="category-filter">Filtrar por categoria</label>
+        <select id="category-filter">
+          <option value="Todos">Todas as Categorias</option>
+          <option value="Marca-páginas">Marca-páginas</option>
+          <option value="Chaveiros">Chaveiros</option>
+          <option value="Kits">Kits</option>
+          <option value="Decoração">Decoração</option>
+        </select>
+      </div>
+      <div class="products-grid" id="products-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Seu pedido</p>
+          <h2 id="cart-title">Carrinho</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-cart aria-label="Fechar carrinho">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="coupon-box">
+        <label for="coupon-input">Cupom de desconto</label>
+        <div class="coupon-row">
+          <input id="coupon-input" type="text" value="DESCONTO5" autocomplete="off">
+          <button type="button" id="apply-coupon">Aplicar</button>
+        </div>
+        <p id="coupon-message">Use DESCONTO5 para 5% de desconto na primeira compra.</p>
+      </div>
+      <div class="cart-summary">
+        <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+        <div><span>Desconto</span><strong id="discount">R$ 0,00</strong></div>
+        <div><span>Frete</span><strong id="shipping">A combinar</strong></div>
+        <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+      </div>
+      <textarea id="order-notes" rows="3" placeholder="Informe o modelo, cor desejada, inicial, nome ou detalhes da personalização."></textarea>
+      <a class="whatsapp-checkout disabled" id="checkout" href="#" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp
+      </a>
+    </div>
+  </aside>
+
+  <a class="floating-whatsapp" href="https://wa.me/5511997480575" target="_blank" rel="noopener" aria-label="Falar com a Opaline pelo WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+
+    </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer" id="contato">
+
+    <div class="footer-content">
+
+      <div class="footer-brand">
+
+        <img
+          src="images/logo-opaline.png"
+          alt="Logo Opaline"
+          class="footer-logo"
+        >
+
+        <p>
+          Peças artesanais feitas com amor e carinho para eternizar momentos especiais.
+        </p>
+
+      </div>
+
+      <div class="footer-contact">
+
+        <h3>Contato</h3>
+
+        <a href="mailto:beatriz.pugliesi4@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          beatriz.pugliesi4@gmail.com
+        </a>
+
+        <a href="https://wa.me/5511997480575" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>
+          (11) 99748-0575
+        </a>
+
+        <a href="https://instagram.com/opaline_atelie" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+          @opaline_atelie
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p class="copyright">
+        © 2026 Opaline Ateliê. Todos os direitos reservados.
+      </p>
+
+      <p class="developer-credit">
+        Desenvolvido por
+
+        <a
+          href="https://instagram.com/nicolasz.dev"
+          target="_blank"
+        >
+          Nicolas Developer
+        </a>
+      </p>
+
+    </div>
+
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
